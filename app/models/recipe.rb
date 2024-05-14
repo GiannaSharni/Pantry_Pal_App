@@ -1,4 +1,5 @@
 class Recipe < ApplicationRecord
   belongs_to :user
-  has_many :favories
+  has_many :favorites
+  has_many :reviews
 end
