@@ -1,0 +1,12 @@
+<div class="homepage-body">
+  <div class="homepage-texts">
+    <h1 class="homepage-title">Pantry Pal</h1>
+    <p class="homepage-paragraph">Got food at home? See what you can make!</p>
+  </div>
+  <div>
+    <%= form_for :recipe, url: root_path, method: :index do |f| %>
+      <%= f.text_field :title, class: "homepage-recipe-title-search", placeholder: 'Enter Item' %>
+    <% end %>
+  </div>
+  <div></div>
+</div>
