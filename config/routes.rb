@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "recipes#index"
+  resources :recipes
+  # , only: [:index, :show]
 
   post "recipes/:id/add_favorite", to: "recipes#add_favorite", as: :add_favorite
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

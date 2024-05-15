@@ -1,12 +1,13 @@
 class RecipesController < ApplicationController
   def index
-    @recipes = Recipe.all
-    if params[:query].present?
-      @crecipes = Recipe.search_by_title(params[:query])
+    if params[:search].present?
+      @recipes= Recipe.find_by(search_by_ingredients: params[:query])
+    else
+      flash[:alert] = "No results found"
     end
   end
 
   def show
-    @recipes = Recipe.all
+    @recipes = Recipe.find(params[:recipe_id])
   end
 end
