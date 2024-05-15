@@ -1,1 +1,56 @@
-// Specific CSS for your home-page
+.homepage-body {
+  margin-top: 50px;
+  text-align: center;
+  padding-bottom: 50px;
+}
+
+.homepage-title {
+  font-size: 64px;
+  font-weight: bold;
+  color: #151515
+}
+
+.homepage-paragraph {
+  font-size: 24px;
+  margin: 20px
+}
+
+.homepage-recipe-title-search {
+  width: 786px;
+  height: 62px;
+  border-radius: 20px;
+  border-color: white;
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 20px;
+}
+
+.homepage-recipe-button {
+  color: white;
+  width: 786px;
+  height: 62px;
+  border-radius: 20px;
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 20px;
+  background-color: #404040
+}
+
+.homepage-recent-recipes-container {
+  margin: 50px;
+  text-align: left;
+}
+
+.homepage-recent-recipes-title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.recent-recipe-button {
+  height: 62px;
+  background-color: white;
+  border-color: white;
+  font-size: 24px;
+  border-radius: 20px
+}

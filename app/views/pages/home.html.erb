@@ -6,7 +6,15 @@
   <div>
     <%= form_for :recipe, url: root_path, method: :index do |f| %>
       <%= f.text_field :title, class: "homepage-recipe-title-search", placeholder: 'Enter Item' %>
+      <%= f.submit "Enter Item", class: "homepage-recipe-button" %>
     <% end %>
   </div>
-  <div></div>
+  <div class="homepage-recent-recipes-container">
+    <h2 class="homepage-recent-recipes-title">Recent Recipes</h2>
+    <div>
+      <% @recent_recipes.each do |recipe| %>
+        <button type="button" class="recent-recipe-button"><%= recipe %></button>
+      <% end %>
+    </div>
+  </div>
 </div>
