@@ -5,6 +5,7 @@ class Recipe < ApplicationRecord
   belongs_to :user
   has_many :favorites
   has_many :reviews
+  has_many :recipesingredient
 
   # include PgSearch::Model
   # pg_search_scope :search_by_title,
@@ -13,8 +14,10 @@ class Recipe < ApplicationRecord
   #     tsearch: { prefix: true }
   #   }
 
+  attr_accessor :search
+
   def self.search
-    url = URI("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?ingredients=apples%2Cflour%2Csugar&number=5&ignorePantry=true&ranking=1")
+    url = URI("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?ingredients=#{ }")
 
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true

@@ -2,22 +2,41 @@
   <h1 class="title">Pantry Pal</h1>
   <p class="subtitle">Got food at home? See what you can make!</p>
   <form class="form-container" action="" enctype="multipart/form-data" method="POST">
-    <input type="hidden" name="$ACTION_REF_1">
-    <input type="hidden" name="$ACTION_1:0" value="{&quot;id&quot;:&quot;df721e00e8ce96eafd50486aae271bff41a913b1&quot;,&quot;bound&quot;:&quot;$@1&quot;}">
-    <input type="hidden" name="$ACTION_1:1" value="[{&quot;message&quot;:&quot;&quot;}]">
-    <input type="hidden" name="$ACTION_KEY" value="k2658536988">
 
     <div class="input-container">
       <input type="text" id="foodItem" autocomplete="off" class="food-item-input" placeholder="Enter item" autofocus="" value="">
-      <button class="add-button" disabled="" type="button">+</button>
-    </div>
 
+     <button class="add-button" disabled="" type="button">+</button>
+  </div>
+
+<div >
+      <%= simple_form_for @recipe, url: recipes_path, method: :get do |f|%>
+          <%= f.input :search,
+                      collection: Ingredient.pluck(:name),
+                      input_html: {multiple: true, data: {controller: "tom-select", tom_select_options_value: {tags: true}}}  %>
+          <%= f.submit class:"add-button"%>
+        <% end %>
+</div>
+<div>
     <ul class="items-list px-1"></ul>
     <input type="hidden" name="foodList" value="[]">
-    <button class="submit-button" disabled="" aria-label="Find Recipe" type="submit">Search ingredients</button>
+    <button class="submit-button" disabled="" aria-label="Find Recipe" type="submit">Find Recipes</button>
+    <%# <%= link_to "+" %>
   </form>
 </div>
+
 
 <div class="recent-recipes">
     <p>Nothing yet</p>
 </div>
+
+<%# 1st add ingredents to search bar use tomSelect to hold ingredeints once that
+is completed add to interplation on the api %>
+<%# once ingredents are added then work on search and linking search to api %>
+
+<%# current_user.ingredents.pluck(name)
+name as ingredeient name %>
+
+<%# Recipe.search.map { |recipe| [recipe["usedIngredients"].map { |r| r["name"] },
+          recipe["missedIngredients"].map { |r| r["name"]}, recipe["missedIngredients"].map { |r| r["name"]} ] }.flatten.uniq,
+                      input_html: {data: {controller: "tom-select"}} %>
