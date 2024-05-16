@@ -76,3 +76,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem 'tom-select-rails', '~> 2.3', '>= 2.3.1'
