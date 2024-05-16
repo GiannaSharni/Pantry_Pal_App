@@ -2,22 +2,32 @@
   <h1 class="title">Pantry Pal</h1>
   <p class="subtitle">Got food at home? See what you can make!</p>
   <form class="form-container" action="" enctype="multipart/form-data" method="POST">
-    <input type="hidden" name="$ACTION_REF_1">
-    <input type="hidden" name="$ACTION_1:0" value="{&quot;id&quot;:&quot;df721e00e8ce96eafd50486aae271bff41a913b1&quot;,&quot;bound&quot;:&quot;$@1&quot;}">
-    <input type="hidden" name="$ACTION_1:1" value="[{&quot;message&quot;:&quot;&quot;}]">
-    <input type="hidden" name="$ACTION_KEY" value="k2658536988">
 
     <div class="input-container">
-      <input type="text" id="foodItem" autocomplete="off" class="food-item-input" placeholder="Enter item" autofocus="" value="">
-      <button class="add-button" disabled="" type="button">+</button>
-    </div>
+      <input type="text" id="foodItem" class="food-item-input" placeholder="Enter item" autofocus="" value="">
+        <%# class:"add-button" %>
+     <button class="add-button" disabled="" type="button">+</button>
+  </div>
 
+<div >
+      <%= simple_form_for @recipe do |f|%>
+          <%= f.input :ingredients, collection: @ingredients,
+            input_html: {multiple: true, data: {controller: "tom-select", tom_select_options_value: {tags: true}}}  %>
+      <% end %>
+        <%# class:"add-button" %>
+</div>
+
+
+<div>
     <ul class="items-list px-1"></ul>
     <input type="hidden" name="foodList" value="[]">
-    <button class="submit-button" disabled="" aria-label="Find Recipe" type="submit">Search ingredients</button>
+    <%# <button class="submit-button" disabled="" aria-label="Find Recipe" type="submit">Find Recipes</button> %>
+    <%= link_to "Find Recipes", recipes_path(@recipes) %>
   </form>
 </div>
+
 
 <div class="recent-recipes">
     <p>Nothing yet</p>
 </div>
+
