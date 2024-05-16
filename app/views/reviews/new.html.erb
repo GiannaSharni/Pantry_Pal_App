@@ -1,0 +1,19 @@
+<div class="review-page">
+  <div class="title">
+    <h1>Hello</h1>
+  </div>
+  <div class="content">
+    <p>Please fill out this form to leave a review</p>
+  </div>
+
+  <div class="form">
+    <%= simple_form_for([@recipe, @review]) do |f| %>
+      <%= f.input :user_id, label: 'Your username please', error: 'Username is mandatory, please specify one' %>
+      <%= f.input :comment, inline_label: 'Please leave a comment' %>
+      <%= f.input :raiting, inline_label: 'Please leave a rating out of 5 stars' %>
+      <div class="create-review-button">
+          <%= f.submit %>
+      </div>
+    <% end %>
+  </div>
+</div>

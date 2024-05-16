@@ -13,6 +13,12 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipes = Recipe.find(params[:recipe_id])
+    @recipes = Recipe.find_by(params[:recipe_id])
   end
+
+  # private
+
+  # def review_params
+  #   params.require(:review).permit(:username, :title, :description, :rating)
+  # end
 end

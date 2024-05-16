@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "recipes#index"
   resources :recipes do
-    resources :ingredients
+    resources :reviews, only: [:new, :create]
   end
 
 # reviews route to be added

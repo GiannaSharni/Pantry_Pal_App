@@ -1,11 +1,31 @@
-<%# <div class= "d-flex align-item-start justify-content-between p-2 bd-highlight">
-
-  <div class="recipe-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @course.background_image_url %>)">
-    <div class="container mt-5">
-      <div class="title">
-        <%= @recipes.title %>
-      </div>
+<!-- app/views/recipes/show.html.erb -->
+<div class="recipe-page">
+  <div class="recipe-header">
+    <div class="recipe-title">
+      <h2><%= @recipes.title %></h2>
+      <p><%= @recipes.description %></p>
     </div>
-  </div> %>
+  </div>
 
-p><strong>Title:</strong> <%= @recipes.title%></p>
+  <div class="recipe-body">
+    <h3>Ingredients</h3>
+      <ul>
+        <% @recipes.ingredients.split("\n").each do |ingredient| %>
+          <li><%= ingredient %></li>
+        <% end %>
+      </ul>
+
+    <h3>Instructions</h3>
+    <ol>
+      <% @recipes.instructions.split("\n").each do |instruction| %>
+        <li><%= instruction %></li>
+      <% end %>
+    </ol>
+  </div>
+
+  <div class="recipe-footer">
+    <h3>Reviews</h3>
+    <%= link_to 'Leave a Review', new_recipe_review_path(@recipes), class: 'review-button' %>
+  </div>
+</div>
+<%# <button class="review-button"><%= link_to 'Leave a Review', class:'create-review-button' %>
