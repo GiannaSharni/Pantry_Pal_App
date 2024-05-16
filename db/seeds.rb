@@ -19,9 +19,9 @@ puts "user has been created"
 
 puts "creating three recipes"
 recipe1 = Recipe.new(
-  title: "pizza",
+  title: "Pizza",
   description: "bla bla bla",
-  ingredients: "cheese, tomato, dough",
+  ingredients: "cheddar cheese\n1/mozzerella\n1/tomato\n1/dough",
   instructions: "do this and do that",
   categories: "vegan"
 )
@@ -29,9 +29,9 @@ recipe1.user = user1
 recipe1.save
 
 recipe2 = Recipe.new(
-  title: "cheesecake",
+  title: "Cheesecake",
   description: "bla bla bla",
-  ingredients: "gram crackers, butter, soft cheese, sugar",
+  ingredients: "gram crackers\n1/butter\n1/soft cheese\n1/sugar",
   instructions: "do this and do that",
   categories: "dessert"
 )
@@ -39,7 +39,7 @@ recipe2.user = user2
 recipe2.save
 
 recipe3 = Recipe.new(
-  title: "steak",
+  title: "Steak",
   description: "bla bla bla",
   ingredients: "steack, garlic, butter, onion, parsely",
   instructions: "do this and do that",
