@@ -23,3 +23,25 @@
   flex-flow: wrap;
   justify-content: space-between;
 }
+
+.ingredients-form-container {
+  display: flex;
+  text-align: center;
+}
+
+.ingredients-text-field {
+  width: 786px;
+  height: 62px;
+  border-radius: 20px;
+  font-size: 20px;
+  padding: 20px;
+}
+
+.ingredients-button {
+  width: 749px;
+  height: 40px;
+  background-color: #404040;
+  color: white;
+  border-radius: 5px;
+  margin-top: 20px;
+}
