@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(:recipe_id)
     if @review.save
-      redirect_to recipe_path(@recipe)
+      redirect_to recipe_path(@recipe), notice: 'Review was successfully created.'
     else
       render :new
     end

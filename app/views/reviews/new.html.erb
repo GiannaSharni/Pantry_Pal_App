@@ -1,19 +1,32 @@
-<div class="review-page">
-  <div class="title">
-    <h1>Hello</h1>
-  </div>
-  <div class="content">
-    <p>Please fill out this form to leave a review</p>
-  </div>
+<div class="review-container">
+  <div class="container">
+    <header>
+      <h1>Fill out this form to leave a review!</h1>
+      <%= simple_form_for ([@recipe, @review]) do |f| %>
+        <div class="form-input-material">
+          <div class="user-name">
+            <%= f.input :user_id, label: 'Your Username', input_html: { placeholder: "Username", type: 'text' } %>
+          </div>
+        </div>
 
-  <div class="form">
-    <%= simple_form_for([@recipe, @review]) do |f| %>
-      <%= f.input :user_id, label: 'Your username please', error: 'Username is mandatory, please specify one' %>
-      <%= f.input :comment, inline_label: 'Please leave a comment' %>
-      <%= f.input :raiting, inline_label: 'Please leave a rating out of 5 stars' %>
-      <div class="create-review-button">
-          <%= f.submit %>
-      </div>
-    <% end %>
+        <div class="form-input-material">
+          <div class="comment">
+            <%= f.input :comment, label: 'Comment', input_html: { placeholder: "Leave your comments here!" } %>
+          </div>
+        </div>
+
+        <div class="form-input-material">
+          <div class="rating">
+            <%= f.input :raiting, label: 'Rating', input_html: { placeholder: "Leave a rating out of 5 stars" } %>
+          </div>
+        </div>
+
+        <footer>
+          <div class="actions">
+            <%= f.submit "Submit Review" %>
+          </div>
+        </footer>
+      <% end %>
+    </header>
   </div>
 </div>
