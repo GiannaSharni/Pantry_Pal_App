@@ -1,6 +1,6 @@
 class FavoritesController < ApplicationController
   def index
-    @favorites = Favorite.all
+    @favorites = Recipe.where(id: current_user.favorites.pluck(:recipe_id))
   end
 
   def add_favorite

@@ -1,33 +1,51 @@
 <div class="content">
   <h1 class="title">Pantry Pal</h1>
   <p class="subtitle">Got food at home? See what you can make!</p>
-  <form class="form-container" action="" enctype="multipart/form-data" method="POST">
+  <form class="form-container" action="/recipes" enctype="multipart/form-data" method="GET">
 
-    <div class="input-container">
-      <input type="text" id="foodItem" class="food-item-input" placeholder="Enter item" autofocus="" value="">
+    <%# <div class="input-container"> %>
+      <%# <input name="foodItem" type="text" id="foodItem" class="food-item-input" placeholder="Enter item" autofocus="" value=""> %>
         <%# class:"add-button" %>
-     <button class="add-button" disabled="" type="button">+</button>
+      <%# <button class="add-button" disabled="" type="submit">+</button> %>
+    <%# </div> %>
+
+    <%# <div > %>
+      <%# <%= simple_form_for @recipe, method: :index do |f|%>
+        <%# <%= f.input :ingredients, collection: @ingredients, %>
+          <%# input_html: {multiple: true, data: {controller: "tom-select", tom_select_options_value: {tags: true}}}  %>
+      <%# <% end %>
+      <%# class:"add-button" %>
+    <%# </div> %>
+
+    <div>
+      <%= form_for :recipe, url: recipes_path, method: :get do |f| %>
+        <%= f.text_field :ingredients %>
+        <%= f.submit 'Find recipes' %>
+      <% end %>
+    </div>
+
+    <div>
+      <ul class="items-list px-1"></ul>
+      <input type="hidden" name="foodList" value="[]">
+      <%# <button class="submit-button" disabled="" aria-label="Find Recipe" type="submit">Find Recipes</button> %>
+      <%= link_to "Find Recipes", recipes_path(@recipes) %>
+    </div>
+  </form>
+
+  <div class="homepage-recent-recipes-container">
+    <h2 class="homepage-recent-recipes-title">Recent Recipes</h2>
+    <div>
+      <% @recent_recipes.each do |recipe| %>
+        <button type="button" class="recent-recipe-button"><%= recipe %></button>
+      <% end %>
+    </div>
   </div>
 
-<div >
-      <%= simple_form_for @recipe do |f|%>
-          <%= f.input :ingredients, collection: @ingredients,
-            input_html: {multiple: true, data: {controller: "tom-select", tom_select_options_value: {tags: true}}}  %>
+  <% if @recipes %>
+    <div class="recipes-cards-collection">
+      <% @recipes.each do |recipe| %>
+        <%= render 'shared/recipe_card', recipe: recipe %>
       <% end %>
-        <%# class:"add-button" %>
+    </div>
+  <% end %>
 </div>
-
-
-<div>
-    <ul class="items-list px-1"></ul>
-    <input type="hidden" name="foodList" value="[]">
-    <%# <button class="submit-button" disabled="" aria-label="Find Recipe" type="submit">Find Recipes</button> %>
-    <%= link_to "Find Recipes", recipes_path(@recipes) %>
-  </form>
-</div>
-
-
-<div class="recent-recipes">
-    <p>Nothing yet</p>
-</div>
-
