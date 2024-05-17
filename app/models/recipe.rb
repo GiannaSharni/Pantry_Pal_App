@@ -16,8 +16,8 @@ class Recipe < ApplicationRecord
 
   attr_accessor :search
 
-  def self.search
-    url = URI("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?ingredients=#{ }")
+  def self.search(ingredients = '')
+    url = URI("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?ingredients=#{ingredients}")
 
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
