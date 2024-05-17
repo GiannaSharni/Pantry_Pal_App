@@ -1,7 +1,13 @@
 <div class="content">
+<<<<<<< Updated upstream
   <h1 class="title">Pantry Pal</h1>
   <p class="subtitle">Got food at home? See what you can make!</p>
   <%# <form class="form-container" action="/recipes" enctype="multipart/form-data" method="GET"> %>
+=======
+  <h1 class="mb-3 text-4xl font-medium text-black">Pantry Pal</h1>
+  <p class="mb-12 text-base text-gray-500">Got food at home? See what you can make!</p>
+  <form class="form-container" action="/recipes" enctype="multipart/form-data" method="GET">
+>>>>>>> Stashed changes
 
     <%# <div class="input-container"> %>
       <%# <input name="foodItem" type="text" id="foodItem" class="food-item-input" placeholder="Enter item" autofocus="" value=""> %>
@@ -33,7 +39,7 @@
   <%# </form> %>
 
   <div class="homepage-recent-recipes-container">
-    <h2 class="homepage-recent-recipes-title">Recent Recipes</h2>
+    <h2 class="homepage-recent-recipes-title text-center">Recent Recipes</h2>
     <div>
       <% @recent_recipes.each do |recipe| %>
         <button type="button" class="recent-recipe-button"><%= recipe %></button>
