@@ -12,9 +12,9 @@ Recipe.destroy_all
 User.destroy_all
 
 puts "creating user"
-user1 = User.create(email: "john@doe.com", password: "123456")
-user2 = User.create(email: "jane@doe.com", password: "123456")
-user3 = User.create(email: "test@cook.com", password: "123456")
+user1 = User.create(email: "john@doe.com", nickname: "john", password: "123456")
+user2 = User.create(email: "jane@doe.com", nickname: "jane", password: "123456")
+user3 = User.create(email: "test@cook.com", nickname: "test", password: "123456")
 puts "user has been created"
 
 puts "creating three recipes"
