@@ -6,11 +6,12 @@ class Recipe < ApplicationRecord
   has_many :favorites
   has_many :reviews
   has_many :recipesingredient
+  has_many :favorited_by, through: :favorites, source: :user
 
   # include PgSearch::Model
   # pg_search_scope :search_by_title,
   #   against: [ :title ],
-  #   using: {
+  #   using: {s
   #     tsearch: { prefix: true }
   #   }
 

@@ -1,0 +1,29 @@
+<div class="container" style="max-width: 700px;">
+  <h1 class="text-center">Your Favorite Recipes</h1>
+
+  <%= form_tag(recipes_path, method: :get, class: "form-inline justify-content-center mt-4") do %>
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <%= text_field_tag :search, params[:search], class: "form-control mr-sm-2", placeholder: "Search recipes" %>
+        </div>
+      </div>
+      <div class="col-auto">
+        <%= submit_tag "Search", class: "btn btn-dark my-2 my-sm-0" %>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @favorites.any? %>
+    <ul>
+      <% @favorites.each do |recipe| %>
+        <li>
+          <%= link_to recipe.name, recipe_path(recipe) %>
+          <%= link_to 'Remove from favorites', remove_favorite_path(recipe), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p class="text-center pt-3">You have no favorite recipes yet.</p>
+  <% end %>
+</div>
