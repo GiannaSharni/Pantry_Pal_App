@@ -7,13 +7,8 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-<<<<<<< Updated upstream
-          <li class="nav-item active red-item">
-            <%= link_to "♥️", "/", class: "nav-link" %>
-=======
           <li class="nav-item">
             <%= link_to raw('<i class="fa-regular fa-heart"></i>'), "http://127.0.0.1:3000/favorites", class: "nav-link" %>
->>>>>>> Stashed changes
           </li>
 
           <li class="nav-item dropdown">
