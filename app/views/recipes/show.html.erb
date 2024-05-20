@@ -1,50 +1,53 @@
 <!-- app/views/recipes/show.html.erb -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 <div class="recipe-page">
   <div class="recipe-header">
     <div class="recipe-title">
       <h2><%= @recipe['title'] %></h2>
-      <img src=<%= @recipe['image'] %>>
+      <img src="<%= @recipe['image'] %>" class="recipe-image">
+
 
       <% if @favorite.nil? %>
         <a href="/favorites/<%= @recipe['id'] %>">
-          <i class="fa-solid fa-heart"></i>
+          <i class="fa-solid fa-heart" style="font-size: 30px; color: red; padding: 10px;"></i>
         </a>
       <% else %>
         <a href="/recipes/<%= @recipe['id'] %>8/add_favorite">
-          <i class="fa-regular fa-heart"></i>
+          <i class="fa-regular fa-heart" style="background-color: green;"></i>
         </a>
       <% end %>
-
-      <p><%= raw(@recipe['summary']) %></p>
     </div>
+          <p style="text-align: left;">
+        <%= raw(@recipe['summary']) %>
+        </p>
   </div>
 
-  <div class="recipe-body">
-    <h3>Ingredients</h3>
-      <ul>
-        <%= @recipe['extendedIngredients'].each do |ingredient| %>
-          <li><%= ingredient['original'] %></li>
-        <% end %>
-      </ul>
-
-    <h3>Instructions</h3>
-    <ol>
-      <% @recipe['instructions'].split("\n").compact_blank.each do |instruction| %>
-        <li><%= instruction %></li>
-      <% end %>
-    </ol>
-  </div>
-
-  <div class="recipe-footer">
-    <h3>Reviews</h3>
-    <% @recipe.reviews.each do |review| %>
-      <div class="review">
-        <p><strong>Comment:</strong> <%= review.comment %></p>
-        <p><strong>Rating:</strong> <%= review.raiting %></p>
-      </div>
+<div class="recipe-body">
+<h3 class="sub-title" style="color: #15452B; font-family: 'Poppins', san serif; text-align: center; font-size: 30px;">Ingredients</h3>
+  <ul>
+    <% @recipe['extendedIngredients'].each do |ingredient| %>
+      <li><%= ingredient['original'] %></li>
     <% end %>
-    <%= link_to 'Leave a Review', new_recipe_review_path(@recipe), class: 'review-button' %>
-  </div>
+  </ul>
 </div>
+
+<h3 class="sub-title" style="color: #15452B; font-family: 'Poppins', sans-serif; text-align: center; font-size: 30px;">Instructions</h3>
+<ol>
+  <%= raw @recipe['instructions'] %>
+</ol>
+
+
+
+  <%# <div class="recipe-footer">
+    <h3>Reviews</h3>
+    <% @recipe.review.each do |review| %>
+      <%# <div class="review">
+        <p><strong>Comment:</strong> <%= review.comment %></p>
+        <%# <p><strong>Rating:</strong> <%= review.raiting %></p>
+      <%# </div>
+    <% end %>
+    <%# <%= link_to 'Leave a Review', new_recipe_review_path(@recipe), class: 'review-button' %>
+  <%# </div>
+</div> %>
 
 <%# <button class="review-button"><%= link_to 'Leave a Review', class:'create-review-button' %>
