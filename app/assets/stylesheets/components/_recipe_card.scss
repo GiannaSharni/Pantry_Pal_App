@@ -1,5 +1,6 @@
 .recipe-card-container {
-  width: 200px
+  width: 200px;
+  margin-bottom: 30px
 }
 
 .recipe-card-image {
@@ -14,4 +15,12 @@
   font-size: 15px;
   height: 45px;
   align-content: center;
+}
+
+.recipe-card-button {
+  color: white;
+  width: 150px;
+  background-color: black;
+  border-radius: 20px;
+  margin: auto 20px;
 }
