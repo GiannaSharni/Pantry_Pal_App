@@ -2,22 +2,34 @@
 <div class="recipe-page">
   <div class="recipe-header">
     <div class="recipe-title">
-      <h2><%= @recipes.title %></h2>
-      <p><%= @recipes.description %></p>
+      <h2><%= @recipe['title'] %></h2>
+      <img src=<%= @recipe['image'] %>>
+
+      <% if @favorite.nil? %>
+        <a href="/favorites/<%= @recipe['id'] %>">
+          <i class="fa-solid fa-heart"></i>
+        </a>
+      <% else %>
+        <a href="/recipes/<%= @recipe['id'] %>8/add_favorite">
+          <i class="fa-regular fa-heart"></i>
+        </a>
+      <% end %>
+
+      <p><%= raw(@recipe['summary']) %></p>
     </div>
   </div>
 
   <div class="recipe-body">
     <h3>Ingredients</h3>
       <ul>
-        <% @recipes.ingredients.split("\n").each do |ingredient| %>
-          <li><%= ingredient %></li>
+        <% @recipe['extendedIngredients'].each do |ingredient| %>
+          <li><%= ingredient['original'] %></li>
         <% end %>
       </ul>
 
     <h3>Instructions</h3>
     <ol>
-      <% @recipes.instructions.split("\n").each do |instruction| %>
+      <% @recipe['instructions'].split("\n").compact_blank.each do |instruction| %>
         <li><%= instruction %></li>
       <% end %>
     </ol>
@@ -25,7 +37,7 @@
 
   <div class="recipe-footer">
     <h3>Reviews</h3>
-    <%= link_to 'Leave a Review', new_recipe_review_path(@recipes), class: 'review-button' %>
+    <%# <%= link_to 'Leave a Review', new_recipe_review_path(@recipe), class: 'review-button' %> %>
   </div>
 </div>
 
