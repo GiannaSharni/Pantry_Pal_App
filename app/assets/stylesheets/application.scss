@@ -15,12 +15,29 @@
 
 
 html {
-  background-color: white;
+  background-color: #E5EED2;
 }
 
 body {
-  //width: 1440px;
-  background-color: #FFAFAF;
-  margin: auto;
-  height: 150vh;
+  /* Set width and height to fill the entire viewport */
+  width: 100vw;
+  height: 100vh;
+  /* Remove any default margin */
+  margin: 0;
+  /* Set background properties */
+  background-image: url('back2.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #E5EED2;
+  /* Positioning */
+  position: relative;
+  /* Ensure the body serves as a positioning context */
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+  body {
+    /* Adjust background size for smaller screens */
+    background-size: contain;
+  }
 }
