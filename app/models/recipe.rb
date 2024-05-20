@@ -34,4 +34,19 @@ class Recipe < ApplicationRecord
     results = JSON.parse(response.read_body.force_encoding("UTF-8"))
     p results
   end
+
+  def self.search_recipe(id)
+    url = URI("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/#{id}/information")
+
+    p url
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+
+    request = Net::HTTP::Get.new(url)
+    request["X-RapidAPI-Key"] = ENV["RAPID_API"]
+    request["X-RapidAPI-Host"] = 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
+
+    response = http.request(request)
+    JSON.parse(response.body)
+  end
 end
