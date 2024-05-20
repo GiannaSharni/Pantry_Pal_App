@@ -7,8 +7,10 @@ class FavoritesController < ApplicationController
   end
 
   def add_favorite
-    @recipe = Recipe.find(params[:recipe_id])
-    current_user.favorites.create(recipe: @recipe)
+    p ''
+    p params
+    p ''
+    current_user.favorites.create(recipe_id: params[:recipe_id])
     redirect_to recipe_path(@recipe), notice: 'Recipe added to favorites.'
   end
 
