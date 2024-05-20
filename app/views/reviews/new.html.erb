@@ -23,7 +23,7 @@
 
         <footer>
           <div class="actions">
-            <%= f.submit "Submit Review" %>
+            <%= f.submit "Submit Review", link_to 'Add Review', new_recipe_review_path(@recipe) %>
           </div>
         </footer>
       <% end %>
