@@ -37,12 +37,6 @@
 
   <div class="recipe-footer">
     <h3>Reviews</h3>
-    <% @recipe.reviews.each do |review| %>
-      <div class="review">
-        <p><strong>Comment:</strong> <%= review.comment %></p>
-        <p><strong>Rating:</strong> <%= review.raiting %></p>
-      </div>
-    <% end %>
     <%= link_to 'Leave a Review', new_recipe_review_path(@recipe), class: 'review-button' %>
   </div>
 </div>
