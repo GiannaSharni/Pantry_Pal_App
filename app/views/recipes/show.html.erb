@@ -22,7 +22,7 @@
   <div class="recipe-body">
     <h3>Ingredients</h3>
       <ul>
-        <% @recipe['extendedIngredients'].each do |ingredient| %>
+        <%= @recipe['extendedIngredients'].each do |ingredient| %>
           <li><%= ingredient['original'] %></li>
         <% end %>
       </ul>
@@ -37,7 +37,7 @@
 
   <div class="recipe-footer">
     <h3>Reviews</h3>
-    <%# <%= link_to 'Leave a Review', new_recipe_review_path(@recipe), class: 'review-button' %> %>
+    <%= link_to 'Leave a Review', new_recipe_review_path(@recipe), class: 'review-button' %>
   </div>
 </div>
 
