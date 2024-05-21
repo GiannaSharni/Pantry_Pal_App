@@ -25,8 +25,10 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.search_recipe(params[:id])
+
     @favorite = current_user.favorites.find_by_id(params[:id])
     @recipe_review = Recipe.find_by_id(params[:id])
+
   end
 
   # private
