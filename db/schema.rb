@@ -10,9 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_20_182645) do
+
+ActiveRecord::Schema[7.1].define(version: 2024_05_21_135141) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_storage_tables", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "favorites", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -26,6 +33,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_20_182645) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "recipes", force: :cascade do |t|
@@ -74,6 +89,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_20_182645) do
   end
 
   add_foreign_key "favorites", "users"
+  add_foreign_key "messages", "users"
   add_foreign_key "recipes", "users"
   add_foreign_key "recipes_ingredients", "ingredients", column: "ingredients_id"
   add_foreign_key "recipes_ingredients", "recipes"

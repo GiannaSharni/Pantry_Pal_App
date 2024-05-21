@@ -29,11 +29,13 @@ class Recipe < ApplicationRecord
     # 'charset=utf-8'
     request["X-RapidAPI-Host"] = 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
 
-    response = http.request(request)
-    results = JSON.parse(response.read_body.force_encoding("UTF-8")).reject do |recipe|
-      recipe['missedIngredientCount'].positive?
+    begin
+      response = http.request(request)
+      results = JSON.parse(response.read_body.force_encoding("UTF-8"))
+    rescue StandardError
+      results = false
     end
-    p results
+    results
   end
 
   def self.search_recipe(id)
@@ -50,3 +52,4 @@ class Recipe < ApplicationRecord
     JSON.parse(response.body)
   end
 end
+# hello
