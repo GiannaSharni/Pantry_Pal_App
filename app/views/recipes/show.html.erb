@@ -22,32 +22,29 @@
         </p>
   </div>
 
-<div class="recipe-body">
-<h3 class="sub-title" style="color: #15452B; font-family: 'Poppins', san serif; text-align: center; font-size: 30px;">Ingredients</h3>
-  <ul>
-    <% @recipe['extendedIngredients'].each do |ingredient| %>
-      <li><%= ingredient['original'] %></li>
-    <% end %>
-  </ul>
+  <div class="recipe-body">
+    <h3>Ingredients</h3>
+      <ul>
+        <%= @recipe['extendedIngredients'].each do |ingredient| %>
+          <li><%= ingredient['original'] %></li>
+        <% end %>
+      </ul>
+
+    <h3>Instructions</h3>
+    <ol>
+      <% @recipe['instructions'].split("\n").compact_blank.each do |instruction| %>
+        <li><%= instruction %></li>
+      <% end %>
+    </ol>
+  </div>
+
+  <div class="recipe-footer">
+    <h3>Reviews</h3>
+    <%# link_to 'Leave a Review', new_recipe_review_path(@recipe), class: 'review-button' %>
+  </div>
 </div>
 
 <h3 class="sub-title" style="color: #15452B; font-family: 'Poppins', sans-serif; text-align: center; font-size: 30px;">Instructions</h3>
 <ol>
   <%= raw @recipe['instructions'] %>
 </ol>
-
-
-
-  <%# <div class="recipe-footer">
-    <h3>Reviews</h3>
-    <% @recipe.review.each do |review| %>
-      <%# <div class="review">
-        <p><strong>Comment:</strong> <%= review.comment %></p>
-        <%# <p><strong>Rating:</strong> <%= review.raiting %></p>
-      <%# </div>
-    <% end %>
-    <%# <%= link_to 'Leave a Review', new_recipe_review_path(@recipe), class: 'review-button' %>
-  <%# </div>
-</div> %>
-
-<%# <button class="review-button"><%= link_to 'Leave a Review', class:'create-review-button' %>
