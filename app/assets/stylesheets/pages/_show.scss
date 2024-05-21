@@ -13,9 +13,12 @@
   padding: 20px;
 }
 
-.recipe-header .recipe-title {
-  margin-bottom: 20px;
-}
+
+  .recipe-title {
+    margin-bottom: 20px;
+    display: 'flex';
+    flex-direction: 'column';
+
 
 .recipe-header .recipe-title h2 {
   font-size: 2em;
@@ -26,9 +29,25 @@
   padding-bottom: 20px;
 }
 
-.recipe-header .recipe-title p {
-  font-size: 1em;
-  color: black;
+
+    p {
+      font-size: 1em;
+      color: black;
+    }
+
+    .favorite-link {
+      margin: 20px
+    }
+
+    .favorite-button {
+      background: none;
+      border: none;
+      color: red;
+      margin: 20px;
+      font-size: 25px;
+    }
+  }
+
 }
 
 .recipe-image {

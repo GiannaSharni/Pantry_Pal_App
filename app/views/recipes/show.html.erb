@@ -8,6 +8,7 @@
 
 
       <% if @favorite.nil? %>
+
         <a href="/favorites/<%= @recipe['id'] %>">
           <i class="fa-solid fa-heart" style="font-size: 30px; color: red; padding: 10px;"></i>
         </a>
@@ -15,6 +16,7 @@
         <a href="/recipes/<%= @recipe['id'] %>8/add_favorite">
           <i class="fa-regular fa-heart" style="background-color: green;"></i>
         </a>
+
       <% end %>
     </div>
           <p style="text-align: left;">
@@ -23,6 +25,7 @@
   </div>
 
   <div class="recipe-body">
+
   <h3 class="sub-title" style="color: #15452B; font-family: 'Poppins', sans-serif; text-align: center; font-size: 30px;">Ingredients</h3>
   <ul>
      <% @recipe['extendedIngredients'].each do |ingredient| %>
@@ -44,6 +47,7 @@
   <h3 class="sub-title" style="color: #15452B; font-family: 'Poppins', sans-serif; text-align: center; font-size: 30px;">Instructions</h3>
    <ol>
       <%= raw @recipe['instructions'] %>
+
     </ol>
 <%# hello %>
 
@@ -51,6 +55,8 @@
 
  <div class="recipe-footer">
     <h3>Reviews</h3>
+
     <%# <%= link_to 'Leave a Review', new_recipe_review_path(@recipe_review), class: 'review-button' %>
+
   </div>
 </div>
