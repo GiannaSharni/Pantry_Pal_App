@@ -1,7 +1,10 @@
 class RecipesController < ApplicationController
   def index
+
+    @recent_recipes = current_user.recipes.order(created_at: :desc).limit(3)
+
     # @ingredients = Recipe.search
-    @recent_recipes = ['Lasagna', 'White Chocolate Big Cake']
+ 
     # access info in api and add these key words together
     # @recipe = Recipe.new
 
@@ -13,14 +16,17 @@ class RecipesController < ApplicationController
         @recipes = Recipe.all
       end
     else
-      @recipes = Recipe.all
+
+      @recipes = []
       # flash[:alert] = "No results found"
+
     end
   end
 
   def show
     @recipe = Recipe.search_recipe(params[:id])
     @favorite = current_user.favorites.find_by_id(params[:id])
+    @recipe_review = Recipe.find_by_id(params[:id])
   end
 
   # private
