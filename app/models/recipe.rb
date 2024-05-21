@@ -3,7 +3,6 @@ require 'net/http'
 
 class Recipe < ApplicationRecord
   belongs_to :user
-  has_many :favorites
   has_many :reviews
   has_many :recipesingredient
   has_many :favorited_by, through: :favorites, source: :user
@@ -31,14 +30,15 @@ class Recipe < ApplicationRecord
     request["X-RapidAPI-Host"] = 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
 
     response = http.request(request)
-    results = JSON.parse(response.read_body.force_encoding("UTF-8"))
+    results = JSON.parse(response.read_body.force_encoding("UTF-8")).reject do |recipe|
+      recipe['missedIngredientCount'].positive?
+    end
     p results
   end
 
   def self.search_recipe(id)
     url = URI("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/#{id}/information")
 
-    p url
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
 

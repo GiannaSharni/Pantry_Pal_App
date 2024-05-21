@@ -6,13 +6,13 @@
       <img src=<%= @recipe['image'] %>>
 
       <% if @favorite.nil? %>
-        <a href="/favorites/<%= @recipe['id'] %>">
-          <i class="fa-solid fa-heart"></i>
-        </a>
+        <form action=<%= "/favorites/#{@recipe['id']}" %> method='POST'>
+          <button class="favorite-button" type='submit'><i class="fa-regular fa-heart"></i></button>
+        </form>
       <% else %>
-        <a href="/recipes/<%= @recipe['id'] %>8/add_favorite">
-          <i class="fa-regular fa-heart"></i>
-        </a>
+        <form action=<%= "/favorites/#{@recipe['id']}" %> method='DELETE'>
+          <button class="favorite-button" type='submit'><i class="fa-solid fa-heart"></i></button>
+        </form>
       <% end %>
 
       <p><%= raw(@recipe['summary']) %></p>
@@ -22,22 +22,26 @@
   <div class="recipe-body">
     <h3>Ingredients</h3>
       <ul>
-        <%= @recipe['extendedIngredients'].each do |ingredient| %>
+        <% @recipe['extendedIngredients'].each do |ingredient| %>
           <li><%= ingredient['original'] %></li>
         <% end %>
       </ul>
 
     <h3>Instructions</h3>
     <ol>
-      <% @recipe['instructions'].split("\n").compact_blank.each do |instruction| %>
-        <li><%= instruction %></li>
+      <% if  @recipe['instructions'] %>
+        <% @recipe['instructions'].split("\n").compact_blank.each do |instruction| %>
+          <li><%= instruction %></li>
+        <% end %>
+      <% else %>
+        <li>Mix everything and put in the oven.</li>
       <% end %>
     </ol>
   </div>
 
   <div class="recipe-footer">
     <h3>Reviews</h3>
-    <%= link_to 'Leave a Review', new_recipe_review_path(@recipe), class: 'review-button' %>
+    <%# <%= link_to 'Leave a Review', new_recipe_review_path(@recipe), class: 'review-button' %> %>
   </div>
 </div>
 
