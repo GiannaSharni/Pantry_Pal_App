@@ -34,12 +34,18 @@
     <%# </div> %>
   <%# </form> %>
 
-  <div class="homepage-recent-recipes-container">
-    <h2 class="pt-5 text-center" style="font-family: 'Poppins', sans-serif; color:#15452B; padding-top: 20px">Recent Recipes</h2>
-
-
-
-  </div>
+    <div class="homepage-recent-recipes-container">
+      <h2 class="pt-5 text-center" style="font-family: 'Poppins', sans-serif; color:#15452B; padding-top: 20px">Recent Recipes</h2>
+      <% if @recent_recipes.any? %>
+        <div class="recipes-grid">
+          <% @recent_recipes.each do |recipe| %>
+            <div class="recipe-card">
+              <%= render 'shared/recipe_card', recipe: recipe %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
 
 <section>
   <% if @recipes %>
@@ -72,6 +78,7 @@
         }
       }
     </style>
+
     <div class="recipes-grid">
       <% @recipes.each do |recipe| %>
         <div class="recipe-card">
