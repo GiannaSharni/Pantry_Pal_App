@@ -1,103 +1,80 @@
 <!-- app/views/recipes/show.html.erb -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 <div class="recipe-page">
   <div class="recipe-header">
     <div class="recipe-title">
       <h2><%= @recipe['title'] %></h2>
       <img src="<%= @recipe['image'] %>" class="recipe-image">
-
-
       <% if @favorite.nil? %>
-
-        <a href="/favorites/<%= @recipe['id'] %>">
-          <i class="fa-solid fa-heart" style="font-size: 30px; color: red; padding: 10px;"></i>
-        </a>
+        <form action=<%= "/favorites/#{@recipe['id']}" %> method='POST'>
+          <button class="favorite-button" type='submit'><i class="fa-regular fa-heart"></i></button>
+        </form>
       <% else %>
-        <a href="/recipes/<%= @recipe['id'] %>8/add_favorite">
-          <i class="fa-regular fa-heart" style="background-color: green;"></i>
-        </a>
-
+        <form action=<%= "/favorites/#{@recipe['id']}" %> method='DELETE'>
+          <button class="favorite-button" type='submit'><i class="fa-solid fa-heart"></i></button>
+        </form>
       <% end %>
     </div>
-          <p style="text-align: left;">
-        <%= raw(@recipe['summary']) %>
-        </p>
+    <p style="text-align: left;">
+      <%= raw(@recipe['summary']) %>
+    </p>
   </div>
 
   <div class="recipe-body">
 
-  <h3 class="sub-title" style="color: #15452B; font-family: 'Poppins', sans-serif; text-align: center; font-size: 30px;">Ingredients</h3>
-  <ul>
-     <% @recipe['extendedIngredients'].each do |ingredient| %>
-      <li><%= ingredient['original'] %></li>
+    <h3 class="sub-title" style="color: #15452B; font-family: 'Poppins', sans-serif; text-align: center; font-size: 30px;">Ingredients</h3>
+    <ul>
+      <% @recipe['extendedIngredients'].each do |ingredient| %>
+        <li><%= ingredient['original'] %></li>
       <% end %>
-  </ul>
+    </ul>
 
-
-    <%# <h3>Instructions</h3>
+    <h3 class="sub-title" style="color: #15452B; font-family: 'Poppins', sans-serif; text-align: center; font-size: 30px;">Instructions</h3>
     <ol>
-      <% @recipe['instructions'].split("\n").compact_blank.each do |instruction| %>
-        <%# <><%= instruction %>
-      <%# <% end %>
-    <%# </ol>
-  </div> %>
-
-
-
-  <h3 class="sub-title" style="color: #15452B; font-family: 'Poppins', sans-serif; text-align: center; font-size: 30px;">Instructions</h3>
-   <ol>
       <%= raw @recipe['instructions'] %>
-
     </ol>
-<%# hello %>
 
+    <!-- Button trigger modal -->
+    <button type="button" class="btn custom-color" data-bs-toggle="modal" data-bs-target="#reviewModal">
+      Leave a Review
+    </button>
 
+    <!-- Review Modal -->
 
-
-<!-- Button trigger modal -->
-<button type="button" class="btn custom-color" data-bs-toggle="modal" data-bs-target="#reviewModal">
-  Leave a Review
-</button>
-
-<!-- Review Modal -->
-
-<div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="reviewModalLabel">Leave a Review</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <!-- Your review form can go here -->
-        <!-- For simplicity, I'll add a basic form -->
-        <form action="/submit_review" method="post">
-          <div class="mb-3">
-            <label for="reviewName" class="form-label">Name</label>
-            <input type="text" class="form-control" id="reviewName" name="name" required>
+    <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="reviewModalLabel">Leave a Review</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="mb-3">
-            <label for="reviewRating" class="form-label">Rating</label>
-            <select class="form-select" id="reviewRating" name="rating" required>
-              <option value="">Select rating</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
+          <div class="modal-body">
+            <!-- Your review form can go here -->
+            <!-- For simplicity, I'll add a basic form -->
+            <form action="/submit_review" method="post">
+              <div class="mb-3">
+                <label for="reviewName" class="form-label">Name</label>
+                <input type="text" class="form-control" id="reviewName" name="name" required>
+              </div>
+              <div class="mb-3">
+                <label for="reviewRating" class="form-label">Rating</label>
+                <select class="form-select" id="reviewRating" name="rating" required>
+                  <option value="">Select rating</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="reviewComment" class="form-label">Comment</label>
+                <textarea class="form-control" id="reviewComment" name="comment" rows="3" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
           </div>
-          <div class="mb-3">
-            <label for="reviewComment" class="form-label">Comment</label>
-            <textarea class="form-control" id="reviewComment" name="comment" rows="3" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-
-
   </div>
 </div>
