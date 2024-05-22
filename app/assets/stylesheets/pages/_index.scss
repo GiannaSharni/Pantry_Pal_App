@@ -121,16 +121,26 @@
   color: white;
 }
 
-// .submit-button:enabled {
-//   background-color: white;
-//   color: black;
-// }
+.recipes-grid {
+  display: grid;
+  grid-gap: 20px; /* Adjust this according to your design */
+}
 
-// .submit-button:disabled {
-//   background-color: #f3f4f6;
-//   color: #9ca3af;
-// }
+/* Responsive Grid */
+@media screen and (min-width: 768px) {
+  .recipes-grid {
+    grid-template-columns: repeat(3, 1fr); /* 2 columns on medium screens */
+  }
+}
 
-// .submit-button:enabled:hover {
-//   background-color: #f9fafb;
-// }
+@media screen and (min-width: 1024px) {
+  .recipes-grid {
+    grid-template-columns: repeat(4, 1fr); /* 3 columns on large screens */
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .recipes-grid {
+    grid-template-columns: repeat(4, 1fr); /* 4 columns on extra large screens */
+  }
+}
