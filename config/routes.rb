@@ -5,8 +5,6 @@ Rails.application.routes.draw do
 
   resources :recipes do
     resources :reviews, only: [:new, :create]
-
-    
     post "add_favorite", to: "recipes#add_favorite", as: :add_favorite
   end
 
