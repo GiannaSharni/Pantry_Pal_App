@@ -9,6 +9,8 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user = current_user
     @recipe = Recipe.find_by_id(params[:recipe_id])
+    @review.recipe_id = params[:recipe_id]
+
     if @review.save!
       redirect_to recipe_path(@recipe), notice: 'Review was successfully created!'
     else
@@ -20,6 +22,6 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:user_id, :comment, :raiting)
+    params.require(:review).permit(:comment, :raiting)
   end
 end

@@ -15,7 +15,7 @@ class FavoritesController < ApplicationController
 
   def remove_favorite
     favorite = current_user.favorites.find_by(recipe_id: params[:recipe_id])
-    favorite&.destroy
+    favorite.destroy
     redirect_to recipe_path(params[:recipe_id]), notice: 'Recipe removed from favorites.'
   end
 end
