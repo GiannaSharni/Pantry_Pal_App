@@ -34,9 +34,11 @@
     </ol>
 
     <!-- Button trigger modal -->
-    <button type="button" class="btn custom-color" data-bs-toggle="modal" data-bs-target="#reviewModal">
-      Leave a Review
-    </button>
+    <div style="display: flex; justify-content: center;">
+      <button type="button" class="btn custom-color" data-bs-toggle="modal" data-bs-target="#reviewModal">
+        Leave a Review
+      </button>
+    </div>
 
     <!-- Review Modal -->
 
@@ -50,14 +52,14 @@
           <div class="modal-body">
             <!-- Your review form can go here -->
             <!-- For simplicity, I'll add a basic form -->
-            <form action="/submit_review" method="post">
+            <form action="/recipes/<%= @recipe['id'] %>/reviews" method="post">
               <div class="mb-3">
-                <label for="reviewName" class="form-label">Name</label>
-                <input type="text" class="form-control" id="reviewName" name="name" required>
+                <label for="review_name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="review_name" name="review[name]" required>
               </div>
               <div class="mb-3">
-                <label for="reviewRating" class="form-label">Rating</label>
-                <select class="form-select" id="reviewRating" name="rating" required>
+                <label for="review_rating" class="form-label">Rating</label>
+                <select class="form-select" id="review_rating" name="review[raiting]" required>
                   <option value="">Select rating</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -67,8 +69,8 @@
                 </select>
               </div>
               <div class="mb-3">
-                <label for="reviewComment" class="form-label">Comment</label>
-                <textarea class="form-control" id="reviewComment" name="comment" rows="3" required></textarea>
+                <label for="review_comment" class="form-label">Comment</label>
+                <textarea class="form-control" id="review_comment" name="review[comment]" rows="3" required></textarea>
               </div>
               <button type="submit" class="btn btn-primary">Submit</button>
             </form>
