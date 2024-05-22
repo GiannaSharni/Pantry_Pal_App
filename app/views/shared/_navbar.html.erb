@@ -2,20 +2,18 @@
   <div class="container-fluid">
     <div class="navbar-title">
       <%= link_to "Pantry Pal", "/", class: "nav-link", style: "font-size: 1.5em; color: #15452B;" %>
-
     </div>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
         <%# added about modal button %>
-<button type="button" class="btn custom-color" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  About
-</button>
-
+          <button type="button" class="btn custom-color" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            About
+          </button>
 
           <li class="nav-item">
-            <%= link_to raw('<i class="fa-regular fa-heart"></i>'), "http://127.0.0.1:3000/favorites", class: "nav-link" %>
+            <%= link_to raw('<i class="fa-regular fa-heart"></i>'), favorites_path, class: "nav-link" %>
           </li>
 
           <li class="nav-item dropdown">
@@ -44,7 +42,7 @@
   <div class="modal-dialog">
     <div class="modal-content" style="padding: 16px;">
     <div class="modal-image">
-<img src="/assets/modalpantrypal.png" alt="Image Description" style="width: 200px; height: 200px; display: flex; align-items: center;">
+    <img src="/assets/modalpantrypal.png" alt="Image Description" style="width: 200px; height: 200px; display: flex; align-items: center;">
 
     </div>
       <div class="modal-header">
@@ -52,9 +50,9 @@
         <button type="button" class="btn-close" style="background-color: green;" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-Our website offers a range of services that can help you discover, save, and organize your favorite recipes.
-With our powerful search feature, you can easily find recipes that match the ingredients you have on hand, making meal planning and grocery shopping a breeze.
-Once you've found a recipe you love, you can save it to your personal collection and organize it into categories for easy access later.
+      Our website offers a range of services that can help you discover, save, and organize your favorite recipes.
+      With our powerful search feature, you can easily find recipes that match the ingredients you have on hand, making meal planning and grocery shopping a breeze.
+      Once you've found a recipe you love, you can save it to your personal collection and organize it into categories for easy access later.
       </div>
     </div>
   </div>
