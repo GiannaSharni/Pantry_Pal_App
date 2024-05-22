@@ -4,7 +4,7 @@ class RecipesController < ApplicationController
     @recent_recipes = current_user.recipes.order(created_at: :desc).limit(3)
 
     # @ingredients = Recipe.search
- 
+
     # access info in api and add these key words together
     # @recipe = Recipe.new
 
