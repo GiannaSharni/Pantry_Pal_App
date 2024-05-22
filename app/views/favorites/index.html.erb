@@ -16,14 +16,9 @@
   <% end %>
 
   <% if @favorites.any? %>
-    <ul>
-      <% @favorites.each do |recipe| %>
-        <li>
-          <%= link_to recipe.name, recipe_path(recipe) %>
-          <%= link_to 'Remove from favorites', remove_favorite_path(recipe), method: :delete, data: { confirm: 'Are you sure?' } %>
-        </li>
-      <% end %>
-    </ul>
+    <% @favorites.each do |recipe| %>
+      <%= render 'shared/recipe_card', recipe: recipe %>
+    <% end %>
   <% else %>
     <p class="text-center pt-3">You have no favorite recipes yet.</p>
   <% end %>

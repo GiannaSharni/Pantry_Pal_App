@@ -3,22 +3,20 @@ class FavoritesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @favorites = Recipe.where(id: current_user.favorites.pluck(:recipe_id))
+    @favorites = current_user.favorites.map do |favorite|
+      Recipe.search_recipe(favorite.recipe_id)
+    end
   end
 
   def add_favorite
-    p ''
-    p params
-    p ''
-    current_user.favorites.create(recipe_id: params[:recipe_id])
-    redirect_to recipe_path(@recipe), notice: 'Recipe added to favorites.'
+    @favorite = current_user.favorites.create!(recipe_id: params[:recipe_id])
+    redirect_to recipe_path(params[:recipe_id]), notice: 'Recipe added to favorites.'
   end
 
   def remove_favorite
-    @recipe = Recipe.find(params[:recipe_id])
-    favorite = current_user.favorites.find_by(recipe: @recipe)
-    favorite.destroy if favorite
-    redirect_to recipe_path(@recipe), notice: 'Recipe removed from favorites.'
+    favorite = current_user.favorites.find_by(recipe_id: params[:recipe_id])
+    favorite&.destroy
+    redirect_to recipe_path(params[:recipe_id]), notice: 'Recipe removed from favorites.'
   end
 end
 
