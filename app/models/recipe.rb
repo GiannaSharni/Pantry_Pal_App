@@ -3,7 +3,7 @@ require 'net/http'
 
 class Recipe < ApplicationRecord
   belongs_to :user
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   has_many :recipesingredient
   has_many :favorited_by, through: :favorites, source: :user
 

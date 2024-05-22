@@ -53,10 +53,51 @@
 
 
 
- <div class="recipe-footer">
-    <h3>Reviews</h3>
 
-    <%# <%= link_to 'Leave a Review', new_recipe_review_path(@recipe_review), class: 'review-button' %>
+<!-- Button trigger modal -->
+<button type="button" class="btn custom-color" data-bs-toggle="modal" data-bs-target="#reviewModal">
+  Leave a Review
+</button>
+
+<!-- Review Modal -->
+
+<div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="reviewModalLabel">Leave a Review</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Your review form can go here -->
+        <!-- For simplicity, I'll add a basic form -->
+        <form action="/submit_review" method="post">
+          <div class="mb-3">
+            <label for="reviewName" class="form-label">Name</label>
+            <input type="text" class="form-control" id="reviewName" name="name" required>
+          </div>
+          <div class="mb-3">
+            <label for="reviewRating" class="form-label">Rating</label>
+            <select class="form-select" id="reviewRating" name="rating" required>
+              <option value="">Select rating</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="reviewComment" class="form-label">Comment</label>
+            <textarea class="form-control" id="reviewComment" name="comment" rows="3" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 
   </div>
 </div>
