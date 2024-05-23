@@ -9,6 +9,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user = current_user
     # @recipe = Recipe.search_recipe(params["recipe_id"])
+    # @recipe = Recipe.find_by_id(params[:recipe_id])
     @review.recipe_id = params["recipe_id"]
     if @review.save!
       raise
