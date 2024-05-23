@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: "recipes#index"
 
   resources :recipes do
-    resources :reviews, only: [:new, :create]
+    resources :reviews, only: :create
   end
 
   get 'favorites', to: 'favorites#index'
