@@ -5,9 +5,9 @@
 <p class="mb-12 text-base text-gray-500" style="color: #15452B; font-family: 'Poppins', sans-serif; font-size: 1.5em; text-align: center;">Got food at home? See what you can make!</p>
 
   <form class="form-container" action="/recipes" enctype="multipart/form-data" method="GET">
-    <div class="ingredients-form-container">
+    <div class="ingredients-form-container d-flex align-items-baseline flex-wrap justify-content-center">
       <%= form_for :recipe, url: recipes_path, method: :get do |f| %>
-        <%= f.text_field :ingredients, class: "ingredients-text-field", data: {controller: "tom-select", tom_select_options_value: {tags: true}} %>
+       <%= f.text_field :ingredients, class: "ingredients-text-field", placeholder: "Enter ingredients: eggs, flour, sugar...", data: {controller: "tom-select", tom_select_options_value: {tags: true}} %>
         <%= f.submit 'Find recipes', class: "ingredients-button" %>
       <% end %>
     </div>
