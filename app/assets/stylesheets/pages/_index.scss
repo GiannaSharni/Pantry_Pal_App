@@ -135,12 +135,12 @@
 
 @media screen and (min-width: 1024px) {
   .recipes-grid {
-    grid-template-columns: repeat(4, 1fr); /* 3 columns on large screens */
+    grid-template-columns: repeat(3, 1fr); /* 3 columns on large screens */
   }
 }
 
 @media screen and (min-width: 1280px) {
   .recipes-grid {
-    grid-template-columns: repeat(4, 1fr); /* 4 columns on extra large screens */
+    grid-template-columns: repeat(3, 1fr); /* 4 columns on extra large screens */
   }
 }

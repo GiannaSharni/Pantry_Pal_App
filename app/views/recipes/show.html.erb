@@ -33,6 +33,11 @@
       <%= raw @recipe['instructions'] %>
     </ol>
 
+    <!-- SEE REVIEWS-->
+    <div>
+      <%= @recipe_reviews  %>
+    </div>
+
     <!-- Button trigger modal -->
     <div style="display: flex; justify-content: center;">
       <button type="button" class="btn custom-color" data-bs-toggle="modal" data-bs-target="#reviewModal">
@@ -53,10 +58,10 @@
             <!-- Your review form can go here -->
             <!-- For simplicity, I'll add a basic form -->
             <form action="/recipes/<%= @recipe['id'] %>/reviews" method="post">
-              <div class="mb-3">
+              <%# <div class="mb-3">
                 <label for="review_name" class="form-label">Name</label>
                 <input type="text" class="form-control" id="review_name" name="review[name]" required>
-              </div>
+              </div> %>
               <div class="mb-3">
                 <label for="review_rating" class="form-label">Rating</label>
                 <select class="form-select" id="review_rating" name="review[raiting]" required>

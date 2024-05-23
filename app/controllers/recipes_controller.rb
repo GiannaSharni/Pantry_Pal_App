@@ -20,11 +20,10 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.search_recipe(params[:id])
-
     @favorite = current_user.favorites.find_by_recipe_id(params[:id])
     # @recipe_review = Recipe.find_by_id(params[:id])
     # @recipe_review = current_user.f!(recipe_id: params[:recipe_id])
-    @recipe_reviews = Review.find_by_recipe_id(recipe_id: params[:recipe_id])
+    @recipe_reviews = Review.find_by_recipe_id(recipe_id: params["recipe_id"])
   end
 
   # private
