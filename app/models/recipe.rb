@@ -5,6 +5,7 @@ class Recipe < ApplicationRecord
   belongs_to :user
   has_many :recipesingredient
   has_many :favorited_by, through: :favorites, source: :user
+  has_many :reviews
 
   # include PgSearch::Model
   # pg_search_scope :search_by_title,

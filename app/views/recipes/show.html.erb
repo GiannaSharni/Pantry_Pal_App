@@ -35,7 +35,17 @@
 
     <!-- SEE REVIEWS-->
     <div>
-      <%= @recipe_reviews  %>
+      <%# <%= @recipe_reviews  %>
+          <% if @review %>
+          <div class="recipes-grid">
+            <% @reviews.each do |review| %>
+              <div class="card">
+                <%= render 'reviews/review', recipe: recipe %>
+              </div>
+            <% end %>
+          </div>
+    <% end %>
+
     </div>
 
     <!-- Button trigger modal -->
