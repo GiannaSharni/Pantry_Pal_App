@@ -5,11 +5,11 @@
       <h2><%= @recipe['title'] %></h2>
       <img src="<%= @recipe['image'] %>" class="recipe-image">
       <% if @favorite.nil? %>
-        <form action=<%= "/favorites/#{@recipe['id']}" %> method='POST'>
+        <form action=<%= "/favorites?recipe_id=#{@recipe["id"]}" %> method='POST'>
           <button class="favorite-button" type='submit'><i class="fa-regular fa-heart"></i></button>
         </form>
       <% else %>
-        <form action=<%= "/favorites/#{@recipe['id']}" %> method='DELETE'>
+        <form action=<%= "/favorites/#{@favorite.id}" %> method='DELETE'>
           <button class="favorite-button" type='submit'><i class="fa-solid fa-heart"></i></button>
         </form>
       <% end %>
