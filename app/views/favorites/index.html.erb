@@ -15,12 +15,14 @@
     </div>
   <% end %>
 
-  <% if @favorites.any? %>
-    <% @favorites.each do |recipe| %>
-      <%= render 'shared/recipe_card', recipe: recipe %>
+  <div class="col-md-4">
+    <% if @favorites.any? %>
+      <% @favorites.each do |recipe| %>
+        <%= render 'shared/recipe_card', recipe: recipe %>
+      <% end %>
+    <% else %>
+      <p class="text-center pt-3">You have no favorite recipes yet.</p>
     <% end %>
-  <% else %>
-    <p class="text-center pt-3">You have no favorite recipes yet.</p>
-  <% end %>
+  </div>
 </div>
 <%# hello %>

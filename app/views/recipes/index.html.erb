@@ -7,7 +7,7 @@
   <form class="form-container" action="/recipes" enctype="multipart/form-data" method="GET">
     <div class="ingredients-form-container">
       <%= form_for :recipe, url: recipes_path, method: :get do |f| %>
-        <%= f.text_field :ingredients, class: "ingredients-text-field", data: {controller: "tom-select", tom_select_options_value: {tags: true}} %>
+        <%= f.text_field :ingredients, class: "ingredients-text-field", placeholder: "Search ingredients...   (eggs, onions, garlic)", data: {controller: "tom-select", tom_select_options_value: {tags: true}} %>
         <%= f.submit 'Find recipes', class: "ingredients-button" %>
       <% end %>
     </div>

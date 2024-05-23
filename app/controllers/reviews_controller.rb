@@ -8,12 +8,13 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.user = current_user
-    @recipe = Recipe.find_by_id(params[:recipe_id])
-    @review.recipe_id = params[:recipe_id]
-
+    # @recipe = Recipe.search_recipe(params["recipe_id"])
+    @review.recipe_id = params["recipe_id"]
     if @review.save!
+      raise
       redirect_to recipe_path(@recipe), notice: 'Review was successfully created!'
     else
+      raise
       # render :new
       redirect_to new_recipe_review_path(@recipe), notice: 'Review was not created. Try again'
     end
