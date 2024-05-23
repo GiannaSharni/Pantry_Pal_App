@@ -33,19 +33,55 @@
     <ol>
       <%= raw @recipe['instructions'] %>
     </ol>
+<style>
+  /* Add this inside a <style> tag in your HTML or in a separate CSS file */
 
+.review-container {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.review-comment {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.review-rating {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #ff9800; /* Example: Orange color for ratings */
+}
+
+</style>
     <!-- SEE REVIEWS-->
-    <div style="border: 1px solid #ddd; border-radius: 5px; padding: 20px; margin: 20px 0; background-color: #f9f9f9;">
-      <div style="margin: 0 0 10px; font-size: 24px; color: #333;">
-        <h2>Recipe Reviews</h2>
-      </div>
-      <div style="font-size: 16px; line-height: 1.5; color: #555;">
-        <% @recipe_reviews.each do |review| %>
-          <p>Comment: <%= review.comment %></p>
-          <p>Rating: <%= review.rating %></p>
-        <% end %>
-      </div>
+<div style="border: 1px solid #ddd; border-radius: 5px; padding: 20px; margin: 20px 0; background-color: #f9f9f9;">
+  <div style="margin: 0 0 10px; font-size: 24px; color: #333;">
+    <h2 class="text-center">Recipe Reviews</h2>
+  </div>
+  <div style="font-size: 16px; line-height: 1.5; color: #555;">
+    <div class="reviews-section">
+      <% @recipe_reviews.each do |review| %>
+        <div class="review-container" style="background-color: white; border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px;">
+          <p class="review-comment" style="font-size: 1.1em; margin-bottom: 10px; color: #333;">Comment: <%= review.comment %></p>
+          <p class="review-rating" style="font-size: 1.2em; font-weight: bold; color: #ff9800;">
+
+            <% review.rating.times do %>
+              <span class="star" style="color: #ff9800;">&#9733;</span>
+            <% end %>
+            <% (5 - review.rating).times do %>
+              <span class="star empty" style="color: #ddd;">&#9734;</span>
+            <% end %>
+          </p>
+        </div>
+      <% end %>
     </div>
+  </div>
+</div>
+
 
 
     <!-- Button trigger modal -->
@@ -61,7 +97,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="reviewModalLabel">Leave a Review</h5>
+            <h5 class="modal-title" id="reviewModalLabel" style="background-color: #4CAF50; border-color: #4CAF50; border-radius: 10px;>Leave a Review</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
@@ -87,7 +123,8 @@
                 <label for="review_comment" class="form-label">Comment</label>
                 <textarea class="form-control" id="review_comment" name="review[comment]" rows="3" required></textarea>
               </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary" style="background-color: #4CAF50; border-color: #4CAF50; border-radius: 10px;">Submit</button>
+
             </form>
           </div>
         </div>
