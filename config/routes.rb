@@ -1,16 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  resources :favorites, only: [:index, :create, :destroy]
+
   root to: "recipes#index"
 
   resources :recipes do
     resources :reviews, only: :create
   end
 
-  get 'favorites', to: 'favorites#index'
-  post 'favorites/:recipe_id', to: 'favorites#add_favorite'
-  delete 'favorites/:recipe_id', to: 'favorites#remove_favorite'
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
 end
